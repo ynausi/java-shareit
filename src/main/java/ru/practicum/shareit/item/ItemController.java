@@ -23,7 +23,7 @@ public class ItemController {
     private final ItemService itemService;
 
     @GetMapping("/{itemId}")
-    public ResponseEntity<ItemDtoResponse> findById(@PathVariable("itemId") int id){
+    public ResponseEntity<ItemDtoResponse> findById(@PathVariable("itemId") int id) {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(itemService.findById(id));
@@ -47,13 +47,13 @@ public class ItemController {
     public ResponseEntity<ItemDtoResponse> saveItem(@Valid @RequestBody ItemDtoRequest itemDtoRequest,
                                                     @RequestHeader("X-Sharer-User-Id") int userId) {
         ItemDtoResponse created = itemService.save(itemDtoRequest,userId);
-        return ResponseEntity.created(URI.create("/"+created.getId()))
+        return ResponseEntity.created(URI.create("/" + created.getId()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(created);
     }
 
     @DeleteMapping("/{itemId}")
-    public ResponseEntity<?> deleteItem(@PathVariable("itemId") int id){
+    public ResponseEntity<?> deleteItem(@PathVariable("itemId") int id) {
         itemService.delete(id);
         return ResponseEntity.ok().build();
     }

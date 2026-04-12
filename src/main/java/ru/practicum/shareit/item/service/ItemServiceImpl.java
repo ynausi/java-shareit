@@ -13,16 +13,14 @@ import ru.practicum.shareit.item.mapper.ItemDtoRequestToItemData;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.user.repository.UserRepository;
-
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
 
 
 @Service
 @RequiredArgsConstructor
-public class ItemServiceImpl implements ItemService{
+public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
     private final UserRepository userRepository;
     private final ItemDataToItemResponse itemDataToItemResponse;
@@ -76,13 +74,13 @@ public class ItemServiceImpl implements ItemService{
         Item item = itemRepository.findById(itemId).orElseThrow(
                 () -> new NotFoundException("No item with id:" + itemId)
         );
-        if (itemPatchDtoRequest.getName()!=null && !itemPatchDtoRequest.getName().isBlank()){
+        if (itemPatchDtoRequest.getName() != null && !itemPatchDtoRequest.getName().isBlank()) {
             item.setName(itemPatchDtoRequest.getName());
         }
-        if (itemPatchDtoRequest.getDescription()!=null && !itemPatchDtoRequest.getDescription().isBlank()) {
+        if (itemPatchDtoRequest.getDescription() != null && !itemPatchDtoRequest.getDescription().isBlank()) {
             item.setDescription(itemPatchDtoRequest.getDescription());
         }
-        if(itemPatchDtoRequest.getAvailable() != null) {
+        if (itemPatchDtoRequest.getAvailable() != null) {
             item.setAvailable(itemPatchDtoRequest.getAvailable());
         }
         item = itemRepository.update(item);

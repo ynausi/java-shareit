@@ -2,7 +2,6 @@ package ru.practicum.shareit.user.mapper;
 
 import org.springframework.stereotype.Repository;
 import ru.practicum.shareit.user.dto.UserRequest;
-import ru.practicum.shareit.user.dto.UserResponse;
 import ru.practicum.shareit.user.model.User;
 
 @Repository

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.user.dto.UserPatchRequest;
 import ru.practicum.shareit.user.dto.UserRequest;
 import ru.practicum.shareit.user.dto.UserResponse;
-import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.user.service.UserService;
 
 import java.net.URI;
@@ -40,7 +39,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<UserResponse> saveUser(@Valid @RequestBody UserRequest userRequest) {
         UserResponse created = userService.save(userRequest);
-        return ResponseEntity.created(URI.create("/"+created.getId()))
+        return ResponseEntity.created(URI.create("/" + created.getId()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(created);
     }

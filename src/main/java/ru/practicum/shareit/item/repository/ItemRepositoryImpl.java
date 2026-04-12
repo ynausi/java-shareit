@@ -8,29 +8,28 @@ import org.springframework.stereotype.Repository;
 import ru.practicum.shareit.exceptions.InternalServerException;
 import ru.practicum.shareit.item.mapper.ItemRowMapper;
 import ru.practicum.shareit.item.model.Item;
-
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.*;
 
 @Repository
 @RequiredArgsConstructor
-public class ItemRepositoryImpl implements ItemRepository{
+public class ItemRepositoryImpl implements ItemRepository {
     private final JdbcTemplate jdbc;
     private final ItemRowMapper mapper;
-    private final static String  FIND_ALL = "SELECT * FROM Items";
-    private final static String FIND_BY_ID = "SELECT * FROM Items WHERE id = ?";
-    private final static String ADD_TO_DB = "INSERT INTO Items " +
+    private static final String  FIND_ALL = "SELECT * FROM Items";
+    private static final String FIND_BY_ID = "SELECT * FROM Items WHERE id = ?";
+    private static final String ADD_TO_DB = "INSERT INTO Items " +
             "(name,description,available,ownerId) " +
             "VALUES (?,?,?,?)";
-    private final static String UPDATE_ITEM = "UPDATE Items SET " +
+    private static final  String UPDATE_ITEM = "UPDATE Items SET " +
             "name = ? , description = ? , available = ? , ownerId = ? " +
             "WHERE id = ?";
-    private final static String DELETE_ITEM = "DELETE FROM Items WHERE id = ?";
+    private static final  String DELETE_ITEM = "DELETE FROM Items WHERE id = ?";
 
-    private final static String SEARCH_ITEMS_BY_NAME = "SELECT * FROM Items WHERE available = true AND " +
+    private static final String SEARCH_ITEMS_BY_NAME = "SELECT * FROM Items WHERE available = true AND " +
             "LOWER(name) LIKE(CONCAT('%',LOWER(?),'%')) ";
-    private final static String SEARCH_USER_ITEMS = "SELECT * FROM Items WHERE ownerId = ?";
+    private static final  String SEARCH_USER_ITEMS = "SELECT * FROM Items WHERE ownerId = ?";
 
     @Override
     public Collection<Item> findAll() {
@@ -49,7 +48,7 @@ public class ItemRepositoryImpl implements ItemRepository{
 
     @Override
     public Optional<Item> findById(int id) {
-        try{
+        try {
             return Optional.of(jdbc.queryForObject(FIND_BY_ID,mapper,id));
         } catch (EmptyResultDataAccessException ignored) {
             return Optional.empty();

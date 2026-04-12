@@ -4,8 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.practicum.shareit.exceptions.InternalServerException;
 import ru.practicum.shareit.exceptions.NotFoundException;
-import ru.practicum.shareit.item.mapper.ItemDataToItemResponse;
-import ru.practicum.shareit.item.mapper.ItemDtoRequestToItemData;
 import ru.practicum.shareit.user.dto.UserPatchRequest;
 import ru.practicum.shareit.user.dto.UserRequest;
 import ru.practicum.shareit.user.dto.UserResponse;
@@ -13,9 +11,7 @@ import ru.practicum.shareit.user.mapper.UserDataToUserResponse;
 import ru.practicum.shareit.user.mapper.UserRequestToData;
 import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.user.repository.UserRepository;
-
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Service

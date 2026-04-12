@@ -15,18 +15,17 @@ import ru.practicum.shareit.user.model.User;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class UserRepositoryImpl implements UserRepository{
-    private final String FIND_ALL = "SELECT * FROM Users";
-    private final String FIND_BY_ID = "SELECT * FROM Users WHERE id = ?";
-    private final String ADD_TO_DB = "INSERT INTO Users(name,email) " +
+public class UserRepositoryImpl implements UserRepository {
+    private static final String FIND_ALL = "SELECT * FROM Users";
+    private static final String FIND_BY_ID = "SELECT * FROM Users WHERE id = ?";
+    private static final String ADD_TO_DB = "INSERT INTO Users(name,email) " +
             "VALUES (?,?)";
-    private final String UPDATE_USER = "UPDATE Users SET name = ?, email = ? WHERE id = ?";
-    private final String DELETE_USER = "DELETE FROM Users WHERE id = ?";
+    private static final String UPDATE_USER = "UPDATE Users SET name = ?, email = ? WHERE id = ?";
+    private static final String DELETE_USER = "DELETE FROM Users WHERE id = ?";
     private final JdbcTemplate jdbc;
     private final UserRowMapper mapper;
 
