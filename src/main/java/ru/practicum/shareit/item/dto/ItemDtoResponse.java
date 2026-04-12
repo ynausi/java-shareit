@@ -13,14 +13,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ItemDtoResponse {
-    Integer id;
+    private Integer id;
     @NotBlank
-    String name;
+    private String name;
     @NotBlank
-    String description;
+    private String description;
     @NotNull
-    Boolean available;
+    private Boolean available;
     @NotNull
-    Integer ownerId;
-    Integer requestId;
+    private Integer ownerId;
+    private Integer requestId;
 }
