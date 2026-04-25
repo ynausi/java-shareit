@@ -118,7 +118,7 @@ public class BookingServiceImpl implements BookingService {
                         .findByBooker_IdAndStatusOrderByStartTimeDesc(userId,StatusValue.valueOf(state));
                 break;
             default:
-                 new IllegalArgumentException("Unkown state: " + state);
+                 throw new IllegalArgumentException("Unkown state: " + state);
         }
         return bookings.stream()
                 .map(bookingMapper::toResponse)
@@ -154,7 +154,7 @@ public class BookingServiceImpl implements BookingService {
                         .findByItem_User_IdAndStatusOrderByStartTimeDesc(userId,StatusValue.valueOf(state));
                 break;
             default:
-                new IllegalArgumentException("Unkown state: " + state);
+                throw new IllegalArgumentException("Unkown state: " + state);
         }
         return bookings.stream()
                 .map(bookingMapper::toResponse)
