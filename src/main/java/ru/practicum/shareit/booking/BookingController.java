@@ -1,5 +1,6 @@
 package ru.practicum.shareit.booking;
 
+import constants.HeaderConstants;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
@@ -25,13 +26,13 @@ public class BookingController {
 
     @GetMapping("/{bookingId}")
     public ResponseEntity<BookingResponse> findBookingById(@PathVariable("bookingId") int bookingId,
-                                                           @RequestHeader("X-Sharer-User-Id") int userId) {
+                                                           @RequestHeader(HeaderConstants.SHARER_USER_ID) int userId) {
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON)
                 .body(bookingService.findBookingById(bookingId,userId));
     }
 
     @PostMapping
-    public ResponseEntity<BookingResponse> save(@RequestHeader("X-Sharer-User-Id") int userId,
+    public ResponseEntity<BookingResponse> save(@RequestHeader(HeaderConstants.SHARER_USER_ID) int userId,
                                                 @Valid @RequestBody BookingRequest bookingRequest) {
         BookingResponse created = bookingService.save(bookingRequest,userId);
         return ResponseEntity.created(URI.create("/" + created.getId()))
@@ -42,20 +43,20 @@ public class BookingController {
     @PatchMapping("/{bookingId}")
     public ResponseEntity<BookingResponse> update(@Param("approved") Boolean approved,
                                                   @PathVariable("bookingId") int bookingId,
-                                                  @RequestHeader("X-Sharer-User-Id") int userId) {
+                                                  @RequestHeader(HeaderConstants.SHARER_USER_ID) int userId) {
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON)
                 .body(bookingService.update(bookingId,approved,userId));
     }
 
     @GetMapping
-    public ResponseEntity<Collection<BookingResponse>> findUserBookings(@RequestHeader("X-Sharer-User-Id") int userId,
+    public ResponseEntity<Collection<BookingResponse>> findUserBookings(@RequestHeader(HeaderConstants.SHARER_USER_ID) int userId,
                                @RequestParam(required = false,defaultValue = "ALL") String state) {
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON)
                 .body(bookingService.findAllUserBookings(userId,state));
     }
 
     @GetMapping("/owner")
-    public ResponseEntity<Collection<BookingResponse>> findAllUserItemWhichAreBooked(@RequestHeader("X-Sharer-User-Id") int userId,
+    public ResponseEntity<Collection<BookingResponse>> findAllUserItemWhichAreBooked(@RequestHeader(HeaderConstants.SHARER_USER_ID) int userId,
                                 @RequestParam(required = false,defaultValue = "ALL") String state) {
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON)
                 .body(bookingService.findAllUserItemWhichAreBooked(userId,state));
