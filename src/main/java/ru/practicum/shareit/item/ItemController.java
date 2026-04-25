@@ -6,7 +6,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.item.dto.*;
-import ru.practicum.shareit.item.model.Comment;
 import ru.practicum.shareit.item.service.ItemService;
 
 import java.net.URI;
@@ -71,7 +70,7 @@ public class ItemController {
                                                        @RequestHeader("X-Sharer-User-Id") int userId,
                                                        @PathVariable("itemId") int itemId) {
         CommentResponse created = itemService.saveComment(itemComment,userId,itemId);
-        return ResponseEntity.created(URI.create("/"+created.getId()))
+        return ResponseEntity.created(URI.create("/" + created.getId()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(created);
     }

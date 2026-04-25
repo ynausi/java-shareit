@@ -9,7 +9,7 @@ public enum StatusValue {
 
     private String title;
 
-    StatusValue(String title){
+    StatusValue(String title) {
         this.title = title;
     }
 
@@ -17,7 +17,6 @@ public enum StatusValue {
     public String getTitle() {
         return title;
     }
-
 
 
 }

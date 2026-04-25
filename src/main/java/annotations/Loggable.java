@@ -1,4 +1,4 @@
-package myAnnotations;
+package annotations;
 
 import org.springframework.boot.logging.LogLevel;
 

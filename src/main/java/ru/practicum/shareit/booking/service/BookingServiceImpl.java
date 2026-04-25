@@ -14,7 +14,6 @@ import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.item.repository.ItemRepository;
 import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.user.repository.UserRepository;
-
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class BookingServiceImpl implements BookingService{
+public class BookingServiceImpl implements BookingService {
     private final BookingRepository bookingRepository;
     private final UserRepository userRepository;
     private final BookingMapper bookingMapper;
@@ -80,7 +79,7 @@ public class BookingServiceImpl implements BookingService{
         }
 
         if (approved) booking.setStatus(StatusValue.APPROVED);
-        if(!approved) booking.setStatus(StatusValue.REJECTED);
+        if (!approved) booking.setStatus(StatusValue.REJECTED);
         booking = bookingRepository.save(booking);
         return bookingMapper.toResponse(booking);
     }
@@ -107,7 +106,7 @@ public class BookingServiceImpl implements BookingService{
                         .findByBooker_IdAndStartTimeBeforeAndEndTimeAfterOrderByStartTimeDesc(userId, now,now);
                 break;
             case "PAST":
-                bookings= bookingRepository
+                bookings = bookingRepository
                         .findByBooker_IdAndEndTimeBeforeOrderByStartTimeDesc(userId,Instant.now());
                 break;
             case "FUTURE":
@@ -143,7 +142,7 @@ public class BookingServiceImpl implements BookingService{
                         .findByItem_User_IdAndStartTimeBeforeAndEndTimeAfterOrderByStartTimeDesc(userId, now,now);
                 break;
             case "PAST":
-                bookings= bookingRepository
+                bookings = bookingRepository
                         .findByItem_User_IdAndEndTimeBeforeOrderByStartTimeDesc(userId,Instant.now());
                 break;
             case "FUTURE":

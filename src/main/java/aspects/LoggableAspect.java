@@ -1,6 +1,6 @@
-package Aspects;
+package aspects;
 
-import MyAnnotations.Loggable;
+import annotations.Loggable;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.logging.LogLevel;
 import org.springframework.stereotype.Component;
-
 
 @Aspect
 @Component

@@ -1,11 +1,8 @@
 package ru.practicum.shareit.booking.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import ru.practicum.shareit.booking.model.Booking;
 import ru.practicum.shareit.booking.model.StatusValue;
-import ru.practicum.shareit.item.model.Item;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -19,10 +16,13 @@ public interface BookingRepository extends JpaRepository<Booking,Integer> {
 
     //Заверщенные
     Collection<Booking> findByBooker_IdAndEndTimeBeforeOrderByStartTimeDesc(int bookerId, Instant now);
+
     //Будущие
     Collection<Booking> findByBooker_IdAndStartTimeAfterOrderByStartTimeDesc(int bookerId,Instant now);
+
     //Текущие
     Collection<Booking> findByBooker_IdAndStartTimeBeforeAndEndTimeAfterOrderByStartTimeDesc(int bookerId,Instant now1,Instant now2);
+
     //В зависимости от значения status
     Collection<Booking> findByBooker_IdAndStatusOrderByStartTimeDesc(int bookerId, StatusValue status);
 
