@@ -1,14 +1,15 @@
-package ru.practicum.shareit.user.dto;
+package ru.practicum.shareit.booking.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResponse {
+public class ItemShortResponse {
     private Integer id;
-    private String email;
     private String name;
 }

@@ -7,10 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemPatchDto {
-    private Integer id;
+public class BookerNameResponse {
     private String name;
-    private String description;
-    private Boolean available;
-    private Integer userId;
 }

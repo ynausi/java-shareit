@@ -1,20 +1,35 @@
 package ru.practicum.shareit.item.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+import ru.practicum.shareit.user.model.User;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * TODO Sprint add-controllers.
  */
-@Data
+@Entity
+@Table(name = "items",schema = "public")
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "name",length = 50,nullable = false)
     private String name;
+    @Column(name = "description",length = 200,nullable = false)
     private String description;
+    @Column(name = "available",nullable = false)
     private Boolean available;
-    private Integer ownerId;
-    private Integer requestId;
+    @ManyToOne
+    @JoinColumn(name = "userid",nullable = false)
+    private User user;
+    @OneToMany(mappedBy = "item")
+    private List<Comment> comments = new ArrayList<>();
 }
