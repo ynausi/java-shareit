@@ -29,7 +29,7 @@ public class ItemRequest {
     @JoinColumn(name = "user_id",nullable = false)
     private User user;
     @OneToMany(mappedBy = "itemRequest")
-    List<Item> items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
     @Column(name = "createdTime")
     private LocalDateTime createdTime;
 }

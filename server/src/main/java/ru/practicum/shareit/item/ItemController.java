@@ -11,9 +11,6 @@ import ru.practicum.shareit.item.service.ItemService;
 import java.net.URI;
 import java.util.Collection;
 
-/**
- * TODO Sprint add-controllers.
- */
 @RestController
 @RequestMapping("/items")
 @RequiredArgsConstructor

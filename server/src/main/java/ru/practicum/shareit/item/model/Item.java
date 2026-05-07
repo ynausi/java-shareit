@@ -7,9 +7,6 @@ import ru.practicum.shareit.user.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * TODO Sprint add-controllers.
- */
 @Entity
 @Table(name = "items",schema = "public")
 @Getter

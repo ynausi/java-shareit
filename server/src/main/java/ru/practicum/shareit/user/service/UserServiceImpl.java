@@ -30,8 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse findById(int userId) {
         return userRepository.findById(userId).map(userMapper::toResponse)
-                .orElseThrow(() -> new NotFoundException("No user with id:" + userId)
-                );
+                .orElseThrow(() -> new NotFoundException("No user with id:" + userId));
     }
 
     @Override

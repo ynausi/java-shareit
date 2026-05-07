@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemRequestReq {
-    private String description;
+public class ItemRequestDtoForResponse {
+    private Integer id;
+    private String name;
+    private Integer ownerId;
 }
