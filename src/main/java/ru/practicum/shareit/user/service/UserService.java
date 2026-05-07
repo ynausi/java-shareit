@@ -10,11 +10,11 @@ public interface UserService {
 
     Collection<UserResponse> findAll();
 
-    UserResponse findById(int id);
+    UserResponse findById(int userId);
 
     UserResponse save(UserRequest userRequest);
 
-    UserResponse update(UserPatchRequest userPatchRequest,int id);
+    UserResponse update(UserPatchRequest userPatchRequest,int userId);
 
     void delete(int id);
 
