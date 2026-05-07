@@ -8,7 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class HeaderConstantsTest {
+class HeaderConstantTest {
 
     @Test
     void shouldCreateHeaderConstantsByReflection() throws Exception {
